@@ -116,7 +116,7 @@ mean_and_sd(list_norm[[1]])
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  3.90  4.49
+    ## 1  4.59  3.25
 
 ``` r
 mean_and_sd(list_norm[[2]])
@@ -125,7 +125,7 @@ mean_and_sd(list_norm[[2]])
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1 -11.9  3.24
+    ## 1 -10.6  3.62
 
 ``` r
 mean_and_sd(list_norm[[3]])
@@ -134,7 +134,7 @@ mean_and_sd(list_norm[[3]])
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  16.9 0.368
+    ## 1  17.0 0.379
 
 ``` r
 mean_and_sd(list_norm[[4]])
@@ -143,7 +143,7 @@ mean_and_sd(list_norm[[4]])
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  99.9 0.968
+    ## 1  99.6 0.944
 
 But this is painfully repetitive. And also hard to save.
 
@@ -165,25 +165,25 @@ output
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  3.90  4.49
+    ## 1  4.59  3.25
     ## 
     ## [[2]]
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1 -11.9  3.24
+    ## 1 -10.6  3.62
     ## 
     ## [[3]]
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  16.9 0.368
+    ## 1  17.0 0.379
     ## 
     ## [[4]]
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  99.9 0.968
+    ## 1  99.6 0.944
 
 If we pnly look at `output`, it is just an empty object with 4 spots.
 When we run `output[[1]]`, we see that the mean and sd for the first
@@ -201,25 +201,25 @@ map(list_norm, mean_and_sd)
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  3.90  4.49
+    ## 1  4.59  3.25
     ## 
     ## $b
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1 -11.9  3.24
+    ## 1 -10.6  3.62
     ## 
     ## $c
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  16.9 0.368
+    ## 1  17.0 0.379
     ## 
     ## $d
     ## # A tibble: 1 × 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  99.9 0.968
+    ## 1  99.6 0.944
 
 The exact same output is produced.
 
@@ -230,16 +230,16 @@ map(list_norm, median)
 ```
 
     ## $a
-    ## [1] 4.171708
+    ## [1] 4.94769
     ## 
     ## $b
-    ## [1] -12.21773
+    ## [1] -9.596721
     ## 
     ## $c
-    ## [1] 16.84821
+    ## [1] 17.03518
     ## 
     ## $d
-    ## [1] 99.86497
+    ## [1] 99.39583
 
 map variants…
 
@@ -247,8 +247,8 @@ map variants…
 map_dbl(list_norm, median)
 ```
 
-    ##          a          b          c          d 
-    ##   4.171708 -12.217726  16.848211  99.864969
+    ##         a         b         c         d 
+    ##  4.947690 -9.596721 17.035178 99.395833
 
 ``` r
 map_df(list_norm, mean_and_sd)
@@ -257,10 +257,10 @@ map_df(list_norm, mean_and_sd)
     ## # A tibble: 4 × 2
     ##     mean    sd
     ##    <dbl> <dbl>
-    ## 1   3.90 4.49 
-    ## 2 -11.9  3.24 
-    ## 3  16.9  0.368
-    ## 4  99.9  0.968
+    ## 1   4.59 3.25 
+    ## 2 -10.6  3.62 
+    ## 3  17.0  0.379
+    ## 4  99.6  0.944
 
 stack the rows up and condense the table, simplify the output and can be
 easily saved
@@ -278,26 +278,26 @@ listcol_df[["norm"]]
 ```
 
     ## $a
-    ##  [1]  5.1105130 11.9615751  2.6776607  9.8086450  3.9952966  5.6203164
-    ##  [7]  0.3783512 -6.7146600 -1.0374867 10.7370014  4.9482581  4.5869586
-    ## [13]  7.8259223  4.3481200  7.3431477  2.6393398  0.5124249 -2.1322031
-    ## [19]  3.0316478  2.3300935
+    ##  [1]  3.9865452  4.9421314  8.5392887  7.8272572  1.6468799  2.3357536
+    ##  [7]  4.9532482  0.4302033  4.9771155 -0.4320727  7.0988235  3.2519286
+    ## [13]  5.2222832  9.2612059  2.7485912  7.2711712  7.4503795  4.3278414
+    ## [19] -2.6385488  8.6211766
     ## 
     ## $b
-    ##  [1] -14.044951 -13.260036 -12.391501 -12.043950 -16.043575 -15.707836
-    ##  [7]  -9.230825 -17.474832  -9.359729 -11.685335 -14.290340  -7.073452
-    ## [13]  -9.425742  -6.890075 -10.490291 -14.092745 -14.112438 -15.503259
-    ## [19]  -7.684184  -8.112074
+    ##  [1]  -8.028035  -9.146858 -14.728373  -6.783508 -13.555110  -5.207594
+    ##  [7]  -8.333475 -13.569228 -11.348298 -17.984597 -11.563404 -13.163642
+    ## [13] -10.046583  -8.492470  -6.545410 -17.654536  -9.056937  -6.597407
+    ## [19]  -8.846025 -12.108535
     ## 
     ## $c
-    ##  [1] 17.05837 16.32954 16.83893 17.02810 16.53473 16.58682 17.36775 16.85749
-    ##  [9] 16.86426 16.67716 17.11112 16.54760 16.14714 17.30275 16.75425 16.57349
-    ## [17] 17.67523 17.21309 16.78437 16.92205
+    ##  [1] 16.38491 16.79884 16.65355 17.61946 17.10087 16.44679 17.17678 17.02194
+    ##  [9] 16.75461 17.56808 16.91058 17.45650 17.08675 16.84154 17.72220 16.85230
+    ## [17] 16.82812 17.15563 17.51924 17.04842
     ## 
     ## $d
-    ##  [1] 100.24692  99.57437  98.94216 100.43250 101.09273  99.87193  98.17698
-    ##  [8] 100.96603  99.85801 101.64893 101.05167  98.68039  99.28416 100.67417
-    ## [15]  98.87544  99.08260  98.88445 100.53094 100.82110  99.76941
+    ##  [1] 101.07366  99.05010  99.39834  97.91523  98.98573  98.92914 100.04858
+    ##  [8]  99.39332 100.02572 100.49933  99.22550  98.28601  99.41879  99.25602
+    ## [15] 100.84935 100.67900  98.45877 101.25918  99.29756 100.39579
 
 ``` r
 output = map(listcol_df[["norm"]], mean_and_sd)
@@ -471,3 +471,260 @@ lm(tmax ~ tmin, data = weather_nest_df[["data"]][[1]])
     ## Coefficients:
     ## (Intercept)         tmin  
     ##       7.209        1.039
+
+Let’s write a short lil ol function
+
+``` r
+weather_lm = function(df){
+  
+  lm(tmax ~  tmin, data = df)
+  
+}
+
+weather_lm(weather_nest_df[["data"]][[1]])
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = tmax ~ tmin, data = df)
+    ## 
+    ## Coefficients:
+    ## (Intercept)         tmin  
+    ##       7.209        1.039
+
+``` r
+map(weather_nest_df[["data"]], weather_lm)
+```
+
+    ## [[1]]
+    ## 
+    ## Call:
+    ## lm(formula = tmax ~ tmin, data = df)
+    ## 
+    ## Coefficients:
+    ## (Intercept)         tmin  
+    ##       7.209        1.039  
+    ## 
+    ## 
+    ## [[2]]
+    ## 
+    ## Call:
+    ## lm(formula = tmax ~ tmin, data = df)
+    ## 
+    ## Coefficients:
+    ## (Intercept)         tmin  
+    ##     20.0966       0.4509  
+    ## 
+    ## 
+    ## [[3]]
+    ## 
+    ## Call:
+    ## lm(formula = tmax ~ tmin, data = df)
+    ## 
+    ## Coefficients:
+    ## (Intercept)         tmin  
+    ##       7.499        1.221
+
+With a function we can map across the list
+
+can i do all this in a tidy way
+
+``` r
+weather_nest_df %>% 
+  mutate(
+    model = map(data, weather_lm)
+  )
+```
+
+    ## # A tibble: 3 × 4
+    ##   name           id          data               model 
+    ##   <chr>          <chr>       <list>             <list>
+    ## 1 CentralPark_NY USW00094728 <tibble [365 × 4]> <lm>  
+    ## 2 Waikiki_HA     USC00519397 <tibble [365 × 4]> <lm>  
+    ## 3 Waterhole_WA   USS0023B17S <tibble [365 × 4]> <lm>
+
+unnesting
+
+``` r
+weather_nest_df %>% 
+  unnest(data)
+```
+
+    ## # A tibble: 1,095 × 6
+    ##    name           id          date        prcp  tmax  tmin
+    ##    <chr>          <chr>       <date>     <dbl> <dbl> <dbl>
+    ##  1 CentralPark_NY USW00094728 2017-01-01     0   8.9   4.4
+    ##  2 CentralPark_NY USW00094728 2017-01-02    53   5     2.8
+    ##  3 CentralPark_NY USW00094728 2017-01-03   147   6.1   3.9
+    ##  4 CentralPark_NY USW00094728 2017-01-04     0  11.1   1.1
+    ##  5 CentralPark_NY USW00094728 2017-01-05     0   1.1  -2.7
+    ##  6 CentralPark_NY USW00094728 2017-01-06    13   0.6  -3.8
+    ##  7 CentralPark_NY USW00094728 2017-01-07    81  -3.2  -6.6
+    ##  8 CentralPark_NY USW00094728 2017-01-08     0  -3.8  -8.8
+    ##  9 CentralPark_NY USW00094728 2017-01-09     0  -4.9  -9.9
+    ## 10 CentralPark_NY USW00094728 2017-01-10     0   7.8  -6  
+    ## # … with 1,085 more rows
+
+## Napoleon
+
+Here’s my scraping function that works for a single page
+
+``` r
+read_page_reviews = function(url) {
+  
+  dynamite_html = read_html(url)
+
+  review_titles = 
+    dynamite_html %>%
+    html_nodes(".a-text-bold span") %>%
+    html_text()
+
+  review_stars = 
+    dynamite_html %>%
+    html_nodes("#cm_cr-review_list .review-rating") %>%
+    html_text() %>%
+    str_extract("^\\d") %>%
+    as.numeric()
+
+  review_text = 
+    dynamite_html %>%
+    html_nodes(".review-text-content span") %>%
+    html_text() %>% 
+    str_replace_all("\n", "") %>% 
+    str_trim() %>% 
+    str_subset("The media could not be loaded.", negate = TRUE) %>% 
+    str_subset("^$", negate = TRUE)
+
+  reviews = tibble(
+    title = review_titles,
+    stars = review_stars,
+    text = review_text
+)
+
+  reviews
+}
+```
+
+What we did last time
+
+``` r
+base_url = "https://www.amazon.com/product-reviews/B00005JNBQ/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&sortBy=recent&pageNumber="
+
+vec_url = str_c(base_url, c(1, 2, 3, 4, 5))
+
+dynamite_reviews = 
+  bind_rows(
+  read_page_reviews(vec_url[1]),
+  read_page_reviews(vec_url[2]),
+  read_page_reviews(vec_url[3]),
+  read_page_reviews(vec_url[4]),
+  read_page_reviews(vec_url[5]),
+)
+
+map(vec_url, read_page_reviews)
+```
+
+    ## [[1]]
+    ## # A tibble: 10 × 3
+    ##    title                                stars text                              
+    ##    <chr>                                <dbl> <chr>                             
+    ##  1 Still the best                           5 Completely stupid, absolutely no …
+    ##  2 70’s and 80’s Schtick Comedy             5 …especially funny if you have eve…
+    ##  3 Amazon Censorship                        5 I hope Amazon does not censor my …
+    ##  4 Watch to say you did                     3 I know it's supposed to be a cult…
+    ##  5 Best Movie Ever!                         5 We just love this movie and even …
+    ##  6 Quirky                                   5 Good family film                  
+    ##  7 Funny movie - can't play it !            1 Sony 4k player won't even recogni…
+    ##  8 A brilliant story about teenage life     5 Napoleon Dynamite delivers dry hu…
+    ##  9 HUHYAH                                   5 Spicy                             
+    ## 10 Cult Classic                             4 Takes a time or two to fully appr…
+    ## 
+    ## [[2]]
+    ## # A tibble: 10 × 3
+    ##    title                                         stars text                     
+    ##    <chr>                                         <dbl> <chr>                    
+    ##  1 Sweet                                             5 Timeless Movie. My Grand…
+    ##  2 Cute                                              4 Fun                      
+    ##  3 great collectible                                 5 one of the greatest movi…
+    ##  4 Iconic, hilarious flick ! About friend ship .     5 Who doesn’t love this mo…
+    ##  5 Funny                                             5 Me and my dad watched th…
+    ##  6 Low budget but okay                               3 This has been a classic …
+    ##  7 Disappointing                                     2 We tried to like this, b…
+    ##  8 Favorite movie 🍿                                 5 This is one of my favori…
+    ##  9 none                                              5 this movie was great Nap…
+    ## 10 Great movie                                       5 Vote for pedro           
+    ## 
+    ## [[3]]
+    ## # A tibble: 10 × 3
+    ##    title                                                             stars text 
+    ##    <chr>                                                             <dbl> <chr>
+    ##  1 Get this to improve your nunchuck and bowstaff skills. Dancing i…     5 "Got…
+    ##  2 Incredible Movie                                                      5 "Fun…
+    ##  3 Always loved this movie!                                              5 "I h…
+    ##  4 Great movie                                                           5 "Bou…
+    ##  5 The case was damaged                                                  3 "It …
+    ##  6 It’s classic                                                          5 "Cle…
+    ##  7 Irreverent comedy                                                     5 "If …
+    ##  8 Great classic!                                                        5 "Fun…
+    ##  9 Most Awesomsomest Movie EVER!!!                                       5 "Thi…
+    ## 10 Always a favorite                                                     5 "I r…
+    ## 
+    ## [[4]]
+    ## # A tibble: 10 × 3
+    ##    title                                                             stars text 
+    ##    <chr>                                                             <dbl> <chr>
+    ##  1 It’s not working the disc keeps showing error when I tried other…     1 "It’…
+    ##  2 Gosh!                                                                 5 "Eve…
+    ##  3 An Acquired Taste                                                     1 "Thi…
+    ##  4 What is this ?                                                        4 "Nic…
+    ##  5 Napoleon Dynamite                                                     2 "I w…
+    ##  6 Great movie                                                           5 "Gre…
+    ##  7 Good movie                                                            5 "Goo…
+    ##  8 Came as Described                                                     5 "Cam…
+    ##  9 Oddly on my list of keepers.                                          5 "Goo…
+    ## 10 Low budget fun                                                        5 "Odd…
+    ## 
+    ## [[5]]
+    ## # A tibble: 10 × 3
+    ##    title                                                             stars text 
+    ##    <chr>                                                             <dbl> <chr>
+    ##  1 On a scale of 1 to 10 this rates a minus                              1 "Thi…
+    ##  2 I always wondered...                                                  5 "wha…
+    ##  3 Audio/video not synced                                                1 "I t…
+    ##  4 Kind of feels like only a bully would actually laugh at this...       1 "...…
+    ##  5 movie                                                                 5 "goo…
+    ##  6 An Overdose of Comical Cringe                                         5 "Exc…
+    ##  7 Glad I never wasted money on this                                     2 "I r…
+    ##  8 A little disappointed                                                 3 "The…
+    ##  9 An (almost) gem. Brought me back to the sweet awkwardness of hig…     5 "To …
+    ## 10 How Could You Not Love Napoleon??                                     5 "I r…
+
+``` r
+napoleon_reviews = 
+  tibble(
+    page = 1:5,
+    page_url = str_c(base_url, page)
+  ) %>% 
+  mutate(
+    reviews = map(page_url, read_page_reviews)
+  )
+
+napoleon_reviews %>% 
+  select(-page_url) %>% 
+  unnest(reviews)
+```
+
+    ## # A tibble: 50 × 4
+    ##     page title                                stars text                        
+    ##    <int> <chr>                                <dbl> <chr>                       
+    ##  1     1 Still the best                           5 Completely stupid, absolute…
+    ##  2     1 70’s and 80’s Schtick Comedy             5 …especially funny if you ha…
+    ##  3     1 Amazon Censorship                        5 I hope Amazon does not cens…
+    ##  4     1 Watch to say you did                     3 I know it's supposed to be …
+    ##  5     1 Best Movie Ever!                         5 We just love this movie and…
+    ##  6     1 Quirky                                   5 Good family film            
+    ##  7     1 Funny movie - can't play it !            1 Sony 4k player won't even r…
+    ##  8     1 A brilliant story about teenage life     5 Napoleon Dynamite delivers …
+    ##  9     1 HUHYAH                                   5 Spicy                       
+    ## 10     1 Cult Classic                             4 Takes a time or two to full…
+    ## # … with 40 more rows
